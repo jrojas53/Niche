@@ -28,8 +28,11 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  flutter:
+  flutter: 
     sdk: flutter
+
+  #table_calendar : https://pub.dev/packages/table_calendar
+  table_calendar: ^3.0.9
 
 
   # The following adds the Cupertino Icons font to your application.
