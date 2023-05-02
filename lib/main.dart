@@ -49,6 +49,22 @@ class _HomePageState extends State<HomePage> {
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
 
+  int currentIndex = 0;
+  //States
+  final screens = [
+
+    /*
+    const Center(child: Text('Calendar', style: TextStyle(fontSize: 60))),
+    const Center(child: Text('Reminders', style: TextStyle(fontSize: 60))),
+    const Center(child: Text('Profile', style: TextStyle(fontSize: 60))),
+    */
+    /*
+    CalendarPage(),
+    RemindersPage(),
+    ProfilePage(),
+    */
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +73,10 @@ class _HomePageState extends State<HomePage> {
           centerTitle: true,
           backgroundColor: Colors.black,
         ),
-        body: TableCalendar(
+        body: 
+          //screens[currentIndex],
+          
+          TableCalendar(
           firstDay: DateTime.utc(2015),
           lastDay: DateTime.utc(2035),
           focusedDay: DateTime.now(),
@@ -102,7 +121,33 @@ class _HomePageState extends State<HomePage> {
           child: Text('Calendar Coming Soon...'),
           */
         ),
-        drawer: Drawer(
+        //BOTTOM NAV BAR: 
+        //https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
+        bottomNavigationBar: BottomNavigationBar(
+          //type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.black,
+          unselectedItemColor: Colors.white,
+          currentIndex: currentIndex,
+          onTap: (index) => setState(() => index),
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_month),
+              label: 'Calendar',
+              backgroundColor: Colors.redAccent
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.star),
+              label: 'Reminders',
+              backgroundColor: Colors.green
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+              backgroundColor: Colors.blue
+            ),
+          ],
+        ),
+        /*drawer: Drawer(
           child: ListView(padding: EdgeInsets.zero, children: [
             const SizedBox(
               height: 84.0,
@@ -130,6 +175,7 @@ class _HomePageState extends State<HomePage> {
               },
             )
           ]),
-        ));
+        ));*/
+    );
   }
 }
