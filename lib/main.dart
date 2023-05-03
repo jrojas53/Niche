@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
+import 'home.dart';
 
 /*
 App Drawer Link: https://docs.flutter.dev/cookbook/design/drawer
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   static const appTitle = 'Nav Drawer';
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: "Niche",
       debugShowCheckedModeBanner: false,
       /*  Dark Mode Option Implementation: 
@@ -27,155 +27,10 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme, */
-      home: HomePage(title: 'HomePage'),
-    );
-  }
-}
-
-/*
-  HomePage extends to a statefulwidget which means that
-  the homepage is a screen that reloads with data
-  there is a menu drawer include in this page
-*/
-class HomePage extends StatefulWidget {
-  const HomePage({super.key, required String title});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  CalendarFormat format = CalendarFormat.month; //Month State
-  DateTime selectedDay = DateTime.now();
-  DateTime focusedDay = DateTime.now();
-
-  int currentIndex = 0;
-  //States
-  final screens = [
-
-    /*
-    const Center(child: Text('Calendar', style: TextStyle(fontSize: 60))),
-    const Center(child: Text('Reminders', style: TextStyle(fontSize: 60))),
-    const Center(child: Text('Profile', style: TextStyle(fontSize: 60))),
-    */
-    /*
-    CalendarPage(),
-    RemindersPage(),
-    ProfilePage(),
-    */
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text("Niche"),
-          centerTitle: true,
-          backgroundColor: Colors.black,
-        ),
-        body: 
-          //screens[currentIndex],
-          
-          TableCalendar(
-          firstDay: DateTime.utc(2015),
-          lastDay: DateTime.utc(2035),
-          focusedDay: DateTime.now(),
-          calendarFormat: format,
-          /*Create the option to change format
-            onFormatChanged: (CalendarFormat format) {
-              setState(() {
-                format: format;
-              });
-            },*/
-          //Option to select day with taps and color customization
-          selectedDayPredicate: (day) {
-            return isSameDay(selectedDay, day);
-          },
-          onDaySelected: (DateTime selectDay, DateTime focusDay) {
-            setState(() {
-              selectedDay = selectDay;
-              focusedDay = focusDay;
-            });
-          },
-          //Calendar Style:
-          calendarStyle: const CalendarStyle(
-            isTodayHighlighted: true,
-              selectedDecoration: BoxDecoration(
-                color: Colors.purple,
-                shape: BoxShape.rectangle,
-              ),
-              selectedTextStyle: TextStyle(color: Colors.white),
-            todayDecoration: BoxDecoration(
-              color: Colors.red,
-              shape: BoxShape.rectangle,
-            ),
-            todayTextStyle: TextStyle(color: Colors.white),
-          ),
-          headerStyle: const HeaderStyle(
-            formatButtonVisible: false,
-            titleCentered: true,
-            formatButtonShowsNext: false,
-          ),
-          /*
-          const Center(
-          child: Text('Calendar Coming Soon...'),
-          */
-        ),
-        //BOTTOM NAV BAR: 
-        //https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
-        bottomNavigationBar: BottomNavigationBar(
-          //type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.black,
-          unselectedItemColor: Colors.white,
-          currentIndex: currentIndex,
-          onTap: (index) => setState(() => index),
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month),
-              label: 'Calendar',
-              backgroundColor: Colors.redAccent
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.star),
-              label: 'Reminders',
-              backgroundColor: Colors.green
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-              backgroundColor: Colors.blue
-            ),
-          ],
-        ),
-        /*drawer: Drawer(
-          child: ListView(padding: EdgeInsets.zero, children: [
-            const SizedBox(
-              height: 84.0,
-              child: DrawerHeader(
-                decoration:
-                    BoxDecoration(color: Color.fromARGB(255, 164, 120, 48)),
-                margin: EdgeInsets.all(0.0),
-                padding: EdgeInsets.all(0.0),
-                child: Text('Views',
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.center),
-              ),
-            ),
-            ListTile(
-              title: const Text('Week'),
-              onTap: () {
-                Navigator.pop(context);
-                //CalendarFormat: format;
-              },
-            ),
-            ListTile(
-              title: const Text('Day'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            )
-          ]),
-        ));*/
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const HomePage(title: '',)
     );
   }
 }
