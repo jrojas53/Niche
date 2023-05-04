@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'calendar_screen.dart';
-import 'reminders_screen.dart';
+//import 'reminders_screen.dart';
 import 'profile_screen.dart';
 
 /*
@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   //States
   final screens = [
     const Calendar(),
-    const Reminders(),
+    //const Reminders(),
     const Profile(),
   ];
 
@@ -63,10 +63,10 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.calendar_month),
               label: 'Calendar',
               backgroundColor: Colors.redAccent),
-          BottomNavigationBarItem(
+          /*BottomNavigationBarItem(
               icon: Icon(Icons.star),
               label: 'Reminders',
-              backgroundColor: Colors.green),
+              backgroundColor: Colors.green),*/
           BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Profile',
